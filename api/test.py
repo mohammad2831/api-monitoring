@@ -1,8 +1,6 @@
 import requests
 import time
 from datetime import datetime
-from celery import shared_task
-
 
 def monitor_api_performance(url: str, threshold: float = 1.0):
     """Monitor API response time and alert if threshold exceeded"""
@@ -25,13 +23,8 @@ def monitor_api_performance(url: str, threshold: float = 1.0):
     except requests.exceptions.RequestException as e:
         print(f"  ❌ REQUEST FAILED: {e}")
 
+# Monitor an API endpoint
 
-
-
-
-@shared_task
-def send_request(api, interval_minutes):
-
-    for i in range(5): 
-        monitor_api_performance(api)
-        time.sleep(2)
+for i in range(5): 
+    monitor_api_performance("https://docs.djangoproject.com/en/5.2/intro/tutorial01/")
+    time.sleep(10)
