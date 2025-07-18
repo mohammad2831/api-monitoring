@@ -112,3 +112,23 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+
+# آدرس Redis Broker (سرور Redis شما)
+CELERY_BROKER_URL = 'redis://localhost:6379/0' 
+# آدرس Redis برای ذخیره نتایج وظایف (اختیاری، اما برای این مثال استفاده می‌کنیم)
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0' 
+
+# فرمت محتوای وظایف و نتایج
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+# منطقه زمانی (مهم برای Celery Beat در آینده)
+CELERY_TIMEZONE = 'Asia/Tehran' # یا 'UTC'
+CELERY_ENABLE_UTC = True
