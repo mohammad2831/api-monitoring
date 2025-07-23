@@ -56,8 +56,6 @@ class ApiView(APIView):
             return Response({"error": "problem in user status table"}, status=408)
         
 
-    def test():
-        pass
 """
 
 
